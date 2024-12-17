@@ -67,20 +67,18 @@ const TodoApp = () => {
   // Authentication functions
   const handleRegister = async () => {
     try {
-      console.log('Attempting registration with:', { username }); // Add this line
       const response = await api.post('/api/auth/register',
-        { username, password },
-        {
-          headers: { 'Content-Type': 'application/json' }
-        }
+        { username, password }
       );
       localStorage.setItem('token', response.data.token);
       setIsLoggedIn(true);
       showAlertMessage('Registration successful');
       await fetchTodos();
     } catch (error) {
-      console.error('Full error details:', error.response || error); // Add this line
-      showAlertMessage(error.response?.data?.error || 'Registration failed', 'error');
+      const errorMessage = error.response?.data?.error ||
+        error.response?.data?.requirements ||
+        'Registration failed';
+      showAlertMessage(errorMessage, 'error');
     }
   };
 
