@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: todo-app-frontend
-    env: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./build
-    envVars:
-      - key: REACT_APP_API_URL
-        value: your_backend_url_after_deployment
