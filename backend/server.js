@@ -25,7 +25,7 @@ const JWT_OPTIONS = {
 };
 
 // Middleware
-// Update this part in your server.js
+// Update this part in your server.jsF
 app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
